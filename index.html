@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Saborizate — Informe de Aplicación</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="/img/Logo.png">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --cream:    #F5EFE6;
-      --warm:     #E8D5B7;
-      --orange:   #D4621A;
-      --rust:     #9C3A1A;
-      --dark:     #1A1208;
-      --charcoal: #2E2415;
-      --tan:      #7A5C3A;
-      --gold:     #C89B40;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --cream: #F5EFE6;
+      --warm: #E8D5B7;
+      --orange: #D4621A;
+      --rust: #9C3A1A;
+      --dark: #1A1208;
+      --charcoal: #2E2415;
+      --tan: #7A5C3A;
+      --gold: #C89B40;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--dark);
@@ -27,6 +41,220 @@
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
+    }
+
+    /* ============================================ */
+    /* HEADER & NAV RESPONSIVE (Mobile First)       */
+    /* ============================================ */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(26, 18, 8, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(200, 155, 64, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .Primer-cuadrante img {
+      width: 100px;
+      height: auto;
+      display: block;
+      transition: width 0.3s ease;
+    }
+
+    .Primer-cuadrante img:hover{
+      width: 120px;
+      border: 3px solid var(--orange); 
+      border-radius: 50%;
+      background: var(--gold);
+      padding: 10px;
+      box-shadow: inset 0 0 5px 10px var(--gold);
+    }
+
+    /* Botón hamburguesa (solo visible en móvil) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: var(--gold);
+      transition: transform 0.2s ease;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navegación desktop */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--cream);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: color 0.25s;
+      padding: 0.5rem 0;
+      display: inline-block;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover {
+      color: var(--gold);
+    }
+
+    /* Responsive: estilos para móviles */
+    @media (max-width: 768px) {
+      body{
+        overflow-x: hidden;
+      }
+
+      header {
+        padding: 0.8rem 1rem;
+      }
+
+      .Primer-cuadrante img {
+        width: 80px;
+      }
+
+      .menu-toggle {
+        display: block;
+        /* Mostrar botón hamburguesa */
+      }
+
+      nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 280px;
+        height: 100vh;
+        background: rgba(26, 18, 8, 0.98);
+        backdrop-filter: blur(16px);
+        border-left: 2px solid rgba(200, 155, 64, 0.3);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        padding: 5rem 2rem;
+        z-index: 999;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      nav.open {
+        display: block;
+        right: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(200, 155, 64, 0.2);
+        padding-bottom: 0.5rem;
+      }
+
+      nav ul li a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 0.5rem 0;
+      }
+
+      /* Overlay cuando el menú está abierto */
+      .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+        z-index: 800;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Ajuste para el botón de cierre dentro del menú móvil */
+      .close-menu {
+        position: absolute;
+        top: 1rem;
+        right: 1.2rem;
+        background: none;
+        border: none;
+        color: var(--gold);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        display: block;
+      }
+    }
+
+    /* Para pantallas muy pequeñas (<=480px) */
+    @media (max-width: 480px) {
+      .Primer-cuadrante img {
+        width: 70px;
+      }
+      
+      nav {
+        width: 85%;
+      }
+      
+      nav ul li a {
+        font-size: 1rem;
+      }
+    }
+
+    /* Desktop normal (ocultar botones específicos de móvil) */
+    @media (min-width: 769px) {
+      .close-menu {
+        display: none;
+      }
     }
 
     /* ── HERO ── */
@@ -44,10 +272,11 @@
 
     .hero::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,98,26,.35) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(200,155,64,.18) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 98, 26, .35) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(200, 155, 64, .18) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -63,7 +292,7 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(4.5rem, 14vw, 11rem);
+      font-size: clamp(4rem, 14vw, 11rem);
       font-weight: 900;
       line-height: .9;
       letter-spacing: -.02em;
@@ -86,14 +315,17 @@
     }
 
     .hero-tags {
-      display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center;
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      justify-content: center;
       margin-top: 2.5rem;
       opacity: 0;
       animation: fadeUp .9s .85s forwards;
     }
 
     .tag {
-      border: 1px solid rgba(200,155,64,.4);
+      border: 1px solid rgba(200, 155, 64, .4);
       border-radius: 99px;
       padding: .35rem 1rem;
       font-size: .78rem;
@@ -103,14 +335,23 @@
     }
 
     .scroll-hint {
-      position: absolute; bottom: 2.5rem;
-      display: flex; flex-direction: column; align-items: center; gap: .4rem;
-      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--tan);
-      opacity: 0; animation: fadeUp 1s 1.4s forwards;
+      position: absolute;
+      bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--tan);
+      opacity: 0;
+      animation: fadeUp 1s 1.4s forwards;
     }
 
     .scroll-line {
-      width: 1px; height: 50px;
+      width: 1px;
+      height: 50px;
       background: linear-gradient(to bottom, var(--gold), transparent);
       animation: scrollPulse 2s 1.5s infinite;
     }
@@ -132,9 +373,9 @@
 
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1.2;
       color: var(--cream);
     }
 
@@ -145,18 +386,17 @@
 
     .body-text {
       margin-top: 1.5rem;
-      font-size: 1.05rem;
-      line-height: 1.85;
+      font-size: 1rem;
+      line-height: 1.75;
       color: var(--warm);
       max-width: 680px;
     }
 
-> Mauri:
-/* ── DIVIDER ── */
+    /* ── DIVIDER ── */
     .divider {
       width: 100%;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(200,155,64,.3), transparent);
+      background: linear-gradient(to right, transparent, rgba(200, 155, 64, .3), transparent);
       margin: 0 auto;
       max-width: 1100px;
     }
@@ -165,38 +405,52 @@
     .origin-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 2rem;
       margin-top: 3.5rem;
       align-items: start;
     }
 
     @media (max-width: 680px) {
-      .origin-grid { grid-template-columns: 1fr; }
+      .origin-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      section {
+        padding: 4rem 1.5rem;
+      }
     }
 
     .origin-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(200,155,64,.15);
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(200, 155, 64, .15);
       border-radius: 1.2rem;
-      padding: 2rem;
+      padding: 1.8rem;
     }
 
     .origin-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--gold);
       margin-bottom: .8rem;
     }
 
     .origin-card p {
-      font-size: .97rem;
-      line-height: 1.8;
+      font-size: .95rem;
+      line-height: 1.7;
       color: var(--warm);
     }
 
     /* ── FEATURES ── */
-    .features-section { background: rgba(255,255,255,.015); padding: 6rem 2rem; }
-    .features-inner { max-width: 1100px; margin: 0 auto; }
+    .features-section {
+      background: rgba(255, 255, 255, .015);
+      padding: 6rem 2rem;
+    }
+
+    .features-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
     .features-grid {
       display: grid;
@@ -207,20 +461,21 @@
 
     .feature-card {
       background: var(--charcoal);
-      border: 1px solid rgba(200,155,64,.12);
+      border: 1px solid rgba(200, 155, 64, .12);
       border-radius: 1.2rem;
-      padding: 2rem 1.8rem;
+      padding: 2rem 1.5rem;
       transition: border-color .3s, transform .3s;
     }
 
     .feature-card:hover {
-      border-color: rgba(212,98,26,.6);
+      border-color: rgba(212, 98, 26, .6);
       transform: translateY(-4px);
     }
 
     .feature-icon {
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: var(--orange);
     }
 
     .feature-card h4 {
@@ -232,15 +487,15 @@
 
     .feature-card p {
       font-size: .9rem;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--tan);
     }
 
     /* ── SCREENS ── */
     .screens-row {
       display: flex;
-      gap: 1.2rem;
-      margin-top: 3.5rem;
+      gap: 1rem;
+      margin-top: 3rem;
       flex-wrap: wrap;
     }
 
@@ -248,25 +503,18 @@
       display: flex;
       align-items: center;
       gap: .7rem;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(200,155,64,.2);
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(200, 155, 64, .2);
       border-radius: 99px;
-      padding: .6rem 1.4rem;
-      font-size: .9rem;
+      padding: .5rem 1.2rem;
+      font-size: .85rem;
       color: var(--warm);
       transition: background .25s, border-color .25s;
     }
 
-    .screen-pill:hover {
-      background: rgba(212,98,26,.15);
-      border-color: var(--orange);
-    }
-
-    .screen-pill span.dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
+    .screen-pill i {
+      font-size: 0.9rem;
+      color: var(--gold);
     }
 
     /* ── STACK ── */
@@ -278,10 +526,10 @@
     }
 
     .stack-item {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(200,155,64,.12);
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(200, 155, 64, .12);
       border-radius: .9rem;
-      padding: 1.4rem 1.6rem;
+      padding: 1.2rem 1.2rem;
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -290,10 +538,13 @@
     .stack-icon {
       font-size: 1.6rem;
       flex-shrink: 0;
+      color: var(--gold);
+      width: 40px;
+      text-align: center;
     }
 
     .stack-item h5 {
-      font-size: .82rem;
+      font-size: .8rem;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--gold);
@@ -301,8 +552,132 @@
     }
 
     .stack-item p {
-      font-size: .85rem;
+      font-size: .8rem;
       color: var(--tan);
+    }
+
+     /* ── DOWNLOAD SECTION ── */
+    .download-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(200, 155, 64, 0.3);
+      border-radius: 1.2rem;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: var(--cream);
+      transition: all 0.3s ease;
+      min-width: 220px;
+      justify-content: center;
+    }
+
+    .download-btn:hover {
+      background: rgba(212, 98, 26, 0.2);
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    .download-btn i {
+      font-size: 2.2rem;
+      color: var(--gold);
+    }
+
+    .btn-text {
+      text-align: left;
+    }
+
+    .btn-text small {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tan);
+      display: block;
+    }
+
+    .btn-text strong {
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-sub {
+      font-size: 0.7rem;
+      color: var(--gold);
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(200, 155, 64, 0.15);
+    }
+
+    .qr-placeholder {
+      width: 150px;
+      height: 150px;
+      background: repeating-linear-gradient(45deg, var(--gold) 0px, var(--gold) 2px, transparent 2px, transparent 8px);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .qr-placeholder i {
+      font-size: 4rem;
+      color: var(--dark);
+      background: var(--cream);
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+    }
+
+    .qr-container p {
+      font-size: 0.8rem;
+      color: var(--tan);
+      text-align: center;
+    }
+
+    .qr-container p i {
+      color: var(--gold);
+      margin-right: 0.3rem;
+    }
+
+    @media (max-width: 550px) {
+      .download-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .download-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .qr-placeholder {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .qr-placeholder i {
+        font-size: 3rem;
+      }
     }
 
     /* ── QUOTE ── */
@@ -313,7 +688,7 @@
 
     blockquote {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 4vw, 2.3rem);
       font-style: italic;
       color: var(--cream);
       max-width: 800px;
@@ -321,13 +696,10 @@
       line-height: 1.4;
     }
 
-    blockquote::before { content: '\201C'; color: var(--orange); margin-right: .2rem; }
-    blockquote::after  { content: '\201D'; color: var(--orange); margin-left: .2rem; }
-
-blockquote footer {
+    blockquote footer {
       margin-top: 1.5rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: .85rem;
+      font-size: .8rem;
       font-style: normal;
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -336,10 +708,10 @@ blockquote footer {
 
     /* ── FOOTER ── */
     footer.page-footer {
-      padding: 3rem 2rem;
+      padding: 2rem 1.5rem;
       text-align: center;
-      border-top: 1px solid rgba(200,155,64,.12);
-      font-size: .78rem;
+      border-top: 1px solid rgba(200, 155, 64, .12);
+      font-size: .7rem;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--tan);
@@ -347,12 +719,19 @@ blockquote footer {
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes scrollPulse {
-      0%, 100% { opacity: .4; } 50% { opacity: 1; }
+      0%, 100% { opacity: .4; }
+      50% { opacity: 1; }
     }
 
     .reveal {
@@ -367,224 +746,296 @@ blockquote footer {
     }
   </style>
 </head>
+
 <body>
-
-<!-- ══ HERO ══ -->
-<div class="hero">
-  <p class="hero-label">Informe de Aplicación Móvil &mdash; 2025</p>
-  <h1>Saborizate</h1>
-  <p class="hero-sub">
-    Una red social móvil pensada para quienes viven la cocina con pasión —
-    compartir recetas, descubrir sabores y conectar con una comunidad gastronómica.
-  </p>
-  <div class="hero-tags">
-    <span class="tag">React Native</span>
-    <span class="tag">Firebase</span>
-    <span class="tag">Node.js</span>
-    <span class="tag">Firestore</span>
-    <span class="tag">Proyecto Personal</span>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</div>
-
-<!-- ══ ORIGIN ══ -->
-<div class="divider"></div>
-<section>
-  <p class="section-label reveal">01 — Origen</p>
-  <h2 class="reveal">¿Cómo <em>nació</em> la idea?</h2>
-  <p class="body-text reveal">
-    Saborizate nació de una pasión genuina por la cocina y la necesidad de tener
-    un espacio dedicado exclusivamente a compartir recetas de forma visual, social
-    e intuitiva. La idea fue simple: ¿por qué no existe una red social hecha para
-    cocineros y amantes de la gastronomía, tal como Instagram lo es para la fotografía?
-  </p>
-
-  <div class="origin-grid">
-    <div class="origin-card reveal">
-      <h3>La Motivación</h3>
-      <p>
-        La frustración de buscar recetas dispersas en blogs desactualizados y
-        videos sin estructura fue el punto de partida. Se necesitaba una plataforma
-        donde cada receta fuera el protagonista y la comunidad el motor.
-      </p>
+  <header>
+    <div class="Primer-cuadrante">
+      <img src="/img/Logo.png" alt="logo Saborizate">
     </div>
-    <div class="origin-card reveal">
-      <h3>La Visión</h3>
-      <p>
-        Crear el "Instagram de las recetas": un espacio donde publicar un plato
-        sea tan natural como compartir una foto, y donde descubrir inspiración
-        culinaria sea parte del scroll diario.
-      </p>
+    
+    <!-- Botón hamburguesa (mobile) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navegación principal -->
+    <nav id="mainNav">
+      <button class="close-menu" id="closeMenu" aria-label="Cerrar menú">
+        <i class="fas fa-times"></i>
+      </button>
+      <ul>
+        <li><a href="#origin">Origen</a></li>
+        <li><a href="#what-is">¿Qué es?</a></li>
+        <li><a href="#features">Funcionalidades</a></li>
+        <li><a href="#screens">Pantallas</a></li>
+        <li><a href="#download">Descargar</a></li>
+        <li><a href="#quote">Testimonios</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Overlay para el menú móvil -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- ══ HERO ══ -->
+  <div class="hero">
+    <p class="hero-label">Informe de Aplicación Móvil &mdash; 2026</p>
+    <h1>Saborizate</h1>
+    <p class="hero-sub">
+      Una red social móvil pensada para quienes viven la cocina con pasión —
+      compartir recetas, descubrir sabores y conectar con una comunidad gastronómica.
+    </p>
+    <div class="hero-tags">
+      <span class="tag"><i class="fab fa-react" style="margin-right: 6px;"></i> React Native</span>
+      <span class="tag"><i class="fas fa-fire" style="margin-right: 6px;"></i> Firebase</span>
+      <span class="tag"><i class="fab fa-node-js" style="margin-right: 6px;"></i> Node.js</span>
+      <span class="tag"><i class="fas fa-database" style="margin-right: 6px;"></i> Firestore</span>
+      <span class="tag"><i class="fas fa-user-check" style="margin-right: 6px;"></i> Proyecto Personal</span>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
     </div>
   </div>
-</section>
 
-<!-- ══ QUÉ ES ══ -->
-<div class="divider"></div>
-<section>
-  <p class="section-label reveal">02 — ¿Qué es?</p>
-  <h2 class="reveal">Una red social <em>culinaria</em></h2>
-  <p class="body-text reveal">
-    Saborizate es una aplicación móvil para compartir, descubrir y guardar recetas.
-    Funciona como un feed visual donde los usuarios publican sus creaciones gastronómicas,
-    siguen a otros cocineros, exploran recetas por categoría y construyen su propio
-    perfil culinario. Es Instagram, pero con sabor.
-  </p>
-</section>
+  <!-- ══ ORIGIN ══ -->
+  <div class="divider"></div>
+  <section id="origin">
+    <p class="section-label reveal">01 — Origen</p>
+    <h2 class="reveal">¿Cómo <em>nació</em> la idea?</h2>
+    <p class="body-text reveal">
+      Saborizate nació de una pasión genuina por la cocina y la necesidad de tener
+      un espacio dedicado exclusivamente a compartir recetas de forma visual, social
+      e intuitiva. La idea fue simple: ¿por qué no existe una red social hecha para
+      cocineros y amantes de la gastronomía, tal como Instagram lo es para la fotografía?
+    </p>
 
-<!-- ══ FEATURES ══ -->
-<div class="divider"></div>
-<div class="features-section">
-  <div class="features-inner">
-    <p class="section-label reveal">03 — Funcionalidades</p>
-    <h2 class="reveal">¿Qué puede <em>hacer</em>?</h2>
-
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">🍽️</div>
-        <h4>Feed de Recetas</h4>
-        <p>Scroll continuo de publicaciones culinarias de los usuarios que sigues, con imágenes y descripciones.</p>
-
-</div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">📖</div>
-        <h4>Detalle de Receta</h4>
-        <p>Vista completa con ingredientes, pasos y fotografías. Toda la info que necesitas para cocinar.</p>
+    <div class="origin-grid">
+      <div class="origin-card reveal">
+        <h3><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 10px;"></i> La Motivación</h3>
+        <p>
+          La frustración de buscar recetas dispersas en blogs desactualizados y
+          videos sin estructura fue el punto de partida. Se necesitaba una plataforma
+          donde cada receta fuera el protagonista y la comunidad el motor.
+        </p>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">👤</div>
-        <h4>Perfil de Usuario</h4>
-        <p>Galería personal de recetas publicadas, seguidores, y estadísticas del perfil culinario.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🔐</div>
-        <h4>Autenticación</h4>
-        <p>Registro e inicio de sesión seguro con Firebase Authentication, protegiendo los datos del usuario.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">📸</div>
-        <h4>Carga de Imágenes</h4>
-        <p>Subida de fotos a Firebase Storage para mostrar los platos con la mejor calidad visual.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🚀</div>
-        <h4>Onboarding</h4>
-        <p>Flujo de bienvenida intuitivo que guía al nuevo usuario a través de las funciones principales.</p>
+      <div class="origin-card reveal">
+        <h3><i class="fas fa-chart-line" style="color: var(--gold); margin-right: 10px;"></i> La Visión</h3>
+        <p>
+          Crear el "Instagram de las recetas": un espacio donde publicar un plato
+          sea tan natural como compartir una foto, y donde descubrir inspiración
+          culinaria sea parte del scroll diario.
+        </p>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══ PANTALLAS ══ -->
-<div class="divider"></div>
-<section>
-  <p class="section-label reveal">04 — Pantallas</p>
-  <h2 class="reveal">Flujo <em>completo</em> de la app</h2>
-  <p class="body-text reveal">
-    La aplicación fue desarrollada pantalla por pantalla de forma metódica,
-    cubriendo todos los flujos esenciales de la experiencia de usuario.
-  </p>
-  <div class="screens-row reveal">
-    <div class="screen-pill"><span class="dot"></span> Splash Screen</div>
-    <div class="screen-pill"><span class="dot"></span> Onboarding</div>
-    <div class="screen-pill"><span class="dot"></span> Login</div>
-    <div class="screen-pill"><span class="dot"></span> Registro</div>
-    <div class="screen-pill"><span class="dot"></span> Feed</div>
-    <div class="screen-pill"><span class="dot"></span> Detalle de Receta</div>
-    <div class="screen-pill"><span class="dot"></span> Perfil de Usuario</div>
-  </div>
-</section>
+  <!-- ══ QUÉ ES ══ -->
+  <div class="divider"></div>
+  <section id="what-is">
+    <p class="section-label reveal">02 — ¿Qué es?</p>
+    <h2 class="reveal">Una red social <em>culinaria</em></h2>
+    <p class="body-text reveal">
+      Saborizate es una aplicación móvil para compartir, descubrir y guardar recetas.
+      Funciona como un feed visual donde los usuarios publican sus creaciones gastronómicas,
+      siguen a otros cocineros, exploran recetas por categoría y construyen su propio
+      perfil culinario. Es Instagram, pero con sabor.
+    </p>
+  </section>
 
-<!-- ══ STACK ══ -->
-<div class="divider"></div>
-<section>
-  <p class="section-label reveal">05 — Tecnología</p>
-  <h2 class="reveal">Stack <em>técnico</em></h2>
-  <p class="body-text reveal">
-    La aplicación fue construida con tecnologías modernas de desarrollo móvil
-    y backend en la nube, garantizando escalabilidad y rendimiento.
-  </p>
-  <div class="stack-grid">
-    <div class="stack-item reveal">
-      <span class="stack-icon">📱</span>
-      <div>
-        <h5>Frontend</h5>
-        <p>React Native CLI (sin Expo)</p>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🔥</span>
-      <div>
-        <h5>Backend</h5>
-        <p>Firebase + Node.js</p>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🗄️</span>
-      <div>
-        <h5>Base de Datos</h5>
-        <p>Cloud Firestore</p>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🖼️</span>
-      <div>
-        <h5>Almacenamiento</h5>
-        <p>Firebase Storage</p>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🔑</span>
-      <div>
-        <h5>Autenticación</h5>
-        <p>Firebase Auth</p>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🏗️</span>
-      <div>
-        <h5>Arquitectura</h5>
-        <p>Componentes modulares por pantalla</p>
+  <!-- ══ FEATURES ══ -->
+  <div class="divider"></div>
+  <div class="features-section" id="features">
+    <div class="features-inner">
+      <p class="section-label reveal">03 — Funcionalidades</p>
+      <h2 class="reveal">¿Qué puede <em>hacer</em>?</h2>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+          <h4>Feed de Recetas</h4>
+          <p>Scroll continuo de publicaciones culinarias de los usuarios que sigues.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+          <h4>Detalle de Receta</h4>
+          <p>Vista completa con ingredientes, pasos y fotografías para cocinar.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
+          <h4>Perfil de Usuario</h4>
+          <p>Galería personal, seguidores y estadísticas del perfil culinario.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-lock"></i></div>
+          <h4>Autenticación</h4>
+          <p>Registro e inicio de sesión seguro con Firebase Authentication.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-camera"></i></div>
+          <h4>Carga de Imágenes</h4>
+          <p>Subida de fotos a Firebase Storage con calidad visual óptima.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-hand-peace"></i></div>
+          <h4>Onboarding</h4>
+          <p>Flujo de bienvenida intuitivo para nuevos usuarios.</p>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ══ QUOTE ══ -->
-<div class="divider"></div>
-<div class="quote-section">
-  <blockquote class="reveal">
-    La cocina es el lenguaje universal de quienes expresan amor a través del sabor.
-    Saborizate es el lugar donde ese lenguaje se comparte.
-    <footer>— Mauricio, creador de Saborizate</footer>
-  </blockquote>
-</div>
-<!-- ══ FOOTER ══ -->
-<div class="divider"></div>
-<footer class="page-footer">
-  Saborizate &mdash; Proyecto Personal &mdash; 2025 &nbsp;|&nbsp; React Native &bull; Firebase &bull; Node.js
-</footer>
+  <!-- ══ PANTALLAS ══ -->
+  <div class="divider"></div>
+  <section id="screens">
+    <p class="section-label reveal">04 — Pantallas</p>
+    <h2 class="reveal">Flujo <em>completo</em> de la app</h2>
+    <p class="body-text reveal">
+      La aplicación fue desarrollada pantalla por pantalla de forma metódica,
+      cubriendo todos los flujos esenciales de la experiencia de usuario.
+    </p>
+    <div class="screens-row reveal">
+      <div class="screen-pill"><i class="fas fa-mobile-alt"></i><span>Splash</span></div>
+      <div class="screen-pill"><i class="fas fa-chalkboard-user"></i><span>Onboarding</span></div>
+      <div class="screen-pill"><i class="fas fa-sign-in-alt"></i><span>Login</span></div>
+      <div class="screen-pill"><i class="fas fa-user-plus"></i><span>Registro</span></div>
+      <div class="screen-pill"><i class="fas fa-rss"></i><span>Feed</span></div>
+      <div class="screen-pill"><i class="fas fa-info-circle"></i><span>Detalle</span></div>
+      <div class="screen-pill"><i class="fas fa-id-card"></i><span>Perfil</span></div>
+    </div>
+  </section>
 
-<script>
-  // Intersection Observer for reveal animations
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        // Stagger siblings that appear at same time
-        const delay = Array.from(entry.target.parentElement.children)
-          .filter(c => c.classList.contains('reveal'))
-          .indexOf(entry.target) * 80;
-        setTimeout(() => entry.target.classList.add('visible'), delay);
-        observer.unobserve(entry.target);
+  <!-- ══ STACK ══ -->
+  <div class="divider"></div>
+  <section id="stack">
+    <p class="section-label reveal">05 — Tecnología</p>
+    <h2 class="reveal">Stack <em>técnico</em></h2>
+    <p class="body-text reveal">
+      La aplicación fue construida con tecnologías modernas de desarrollo móvil
+      y backend en la nube, garantizando escalabilidad y rendimiento.
+    </p>
+    <div class="stack-grid">
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fab fa-react"></i></span><div><h5>Frontend</h5><p>React Native CLI</p></div></div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-cloud"></i></span><div><h5>Backend</h5><p>Firebase + Node.js</p></div></div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-database"></i></span><div><h5>Base de Datos</h5><p>Cloud Firestore</p></div></div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-image"></i></span><div><h5>Almacenamiento</h5><p>Firebase Storage</p></div></div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-key"></i></span><div><h5>Autenticación</h5><p>Firebase Auth</p></div></div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-cubes"></i></span><div><h5>Arquitectura</h5><p>Componentes modulares</p></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <section id="download">
+    <p class="section-label reveal">06 — Descargar</p>
+    <h2 class="reveal">La aplicación <em>SABORIZATE</em> para descargar</h2>
+    <p class="body-text reveal">
+      Disponible próximamente en las principales tiendas de aplicaciones. 
+      Sé parte de la comunidad culinaria que está revolucionando la forma de compartir recetas.
+    </p>
+
+    <div class="download-buttons reveal">
+      <a href="#" class="download-btn">
+        <i class="fab fa-google-play"></i>
+        <div class="btn-text">
+          <small>Descargar en</small>
+          <strong>Google Play</strong>
+          <span class="btn-sub">Próximamente</span>
+        </div>
+      </a>
+      <a href="#" class="download-btn">
+        <i class="fab fa-apple"></i>
+        <div class="btn-text">
+          <small>Descargar en</small>
+          <strong>App Store</strong>
+          <span class="btn-sub">Próximamente</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="qr-container reveal">
+      <div class="qr-placeholder">
+        <i class="fas fa-qrcode"></i>
+      </div>
+      <p><i class="fas fa-mobile-alt"></i> Escanea el código QR para descargar la versión demo</p>
+    </div>
+  </section>
+
+  <!-- ══ QUOTE ══ -->
+  <div class="divider"></div>
+  <div class="quote-section" id="quote">
+    <blockquote class="reveal">
+      La cocina es el lenguaje universal de quienes expresan amor a través del sabor.
+      Saborizate es el lugar donde ese lenguaje se comparte.
+      <footer>— Mauricio, creador de Saborizate</footer>
+    </blockquote>
+  </div>
+  
+  <!-- ══ FOOTER ══ -->
+  <div class="divider"></div>
+  <footer class="page-footer">
+    <i class="fas fa-utensil-spoon"></i> Saborizate &mdash; 2026 &nbsp;|&nbsp; 
+    <i class="fab fa-react"></i> React Native &bull; <i class="fas fa-fire"></i> Firebase
+  </footer>
+
+  <script>
+    // Menú hamburguesa para móvil
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    function openMenu() {
+      mainNav.classList.add('open');
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Evita scroll cuando el menú está abierto
+    }
+    
+    function closeMenu() {
+      mainNav.classList.remove('open');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', openMenu);
+    }
+    
+    if (closeMenuBtn) {
+      closeMenuBtn.addEventListener('click', closeMenu);
+    }
+    
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', closeMenu);
+    }
+    
+    // Cerrar menú al hacer clic en un enlace
+    const navLinks = document.querySelectorAll('#mainNav ul li a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    
+    // Ajustar al cambiar tamaño de ventana: si se redimensiona a escritorio y el menú estaba abierto, se cierra
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && mainNav.classList.contains('open')) {
+        closeMenu();
       }
     });
-  }, { threshold: 0.12 });
-
-  reveals.forEach(el => observer.observe(el));
-</script>
+    
+    // Intersection Observer for reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement?.children || []).filter(c => c.classList?.contains('reveal'));
+          const index = siblings.indexOf(entry.target);
+          const delay = index * 80;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
+
 </html>
