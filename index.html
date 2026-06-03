@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Saborizate — Informe de Aplicación</title>
-  <link rel="icon" href="img/Logo.png">
+  <link rel="icon" href="/img/Logo.png">
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link
@@ -67,9 +67,9 @@
       transition: width 0.3s ease;
     }
 
-    .Primer-cuadrante img:hover{
+    .Primer-cuadrante img:hover {
       width: 120px;
-      border: 3px solid var(--orange); 
+      border: 3px solid var(--orange);
       border-radius: 50%;
       background: var(--gold);
       padding: 10px;
@@ -140,7 +140,7 @@
 
     /* Responsive: estilos para móviles */
     @media (max-width: 768px) {
-      body{
+      body {
         overflow-x: hidden;
       }
 
@@ -240,11 +240,11 @@
       .Primer-cuadrante img {
         width: 70px;
       }
-      
+
       nav {
         width: 85%;
       }
-      
+
       nav ul li a {
         font-size: 1rem;
       }
@@ -415,7 +415,7 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
-      
+
       section {
         padding: 4rem 1.5rem;
       }
@@ -556,7 +556,7 @@
       color: var(--tan);
     }
 
-     /* ── DOWNLOAD SECTION ── */
+    /* ── DOWNLOAD SECTION ── */
     .download-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -664,17 +664,17 @@
         justify-content: center;
         padding: 0.8rem 1.5rem;
       }
-      
+
       .download-buttons {
         flex-direction: column;
         align-items: center;
       }
-      
+
       .qr-placeholder {
         width: 120px;
         height: 120px;
       }
-      
+
       .qr-placeholder i {
         font-size: 3rem;
       }
@@ -723,6 +723,7 @@
         opacity: 0;
         transform: translateY(24px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -730,8 +731,15 @@
     }
 
     @keyframes scrollPulse {
-      0%, 100% { opacity: .4; }
-      50% { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: .4;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     .reveal {
@@ -744,6 +752,57 @@
       opacity: 1;
       transform: none;
     }
+
+    /* Estilos adicionales para las nuevas secciones */
+    .screens-group {
+      margin-top: 1rem;
+    }
+
+    .screens-row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .screen-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(200, 155, 64, 0.2);
+      border-radius: 99px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--warm);
+      transition: all 0.25s ease;
+    }
+
+    .screen-pill:hover {
+      background: rgba(212, 98, 26, 0.15);
+      border-color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .screen-pill i {
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    .stat-badge {
+      transition: all 0.25s ease;
+    }
+
+    .stat-badge:hover {
+      background: rgba(212, 98, 26, 0.25) !important;
+      transform: translateY(-2px);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
   </style>
 </head>
 
@@ -752,7 +811,7 @@
     <div class="Primer-cuadrante">
       <img src="/img/Logo.png" alt="logo Saborizate">
     </div>
-    
+
     <!-- Botón hamburguesa (mobile) -->
     <button class="menu-toggle" id="menuToggle" aria-label="Menú">
       <i class="fas fa-bars"></i>
@@ -829,56 +888,84 @@
     </div>
   </section>
 
-  <!-- ══ QUÉ ES ══ -->
+  <!-- ══ QUÉ ES SABORIZATE ══ -->
   <div class="divider"></div>
   <section id="what-is">
     <p class="section-label reveal">02 — ¿Qué es?</p>
     <h2 class="reveal">Una red social <em>culinaria</em></h2>
     <p class="body-text reveal">
-      Saborizate es una aplicación móvil para compartir, descubrir y guardar recetas.
-      Funciona como un feed visual donde los usuarios publican sus creaciones gastronómicas,
-      siguen a otros cocineros, exploran recetas por categoría y construyen su propio
-      perfil culinario. Es Instagram, pero con sabor.
+      Saborizate es una aplicación móvil diseñada para amantes de la cocina. Es el espacio ideal
+      para compartir tus recetas, descubrir nuevos platos y conectar con una comunidad
+      apasionada por la gastronomía. Como un Instagram pero con sabor, aquí cada publicación
+      es una experiencia culinaria.
     </p>
+
+    <div class="origin-grid" style="margin-top: 2rem;">
+      <div class="origin-card reveal">
+        <h3><i class="fas fa-share-alt" style="color: var(--gold); margin-right: 10px;"></i> Compartir</h3>
+        <p>Publica tus recetas con fotos, ingredientes y pasos detallados. Tu cuaderno de recetas digital, siempre
+          contigo.</p>
+      </div>
+      <div class="origin-card reveal">
+        <h3><i class="fas fa-compass" style="color: var(--gold); margin-right: 10px;"></i> Descubrir</h3>
+        <p>Explora recetas por categorías, sigue a tus chefs favoritos y encuentra inspiración para cada comida.</p>
+      </div>
+      <div class="origin-card reveal">
+        <h3><i class="fas fa-users" style="color: var(--gold); margin-right: 10px;"></i> Conectar</h3>
+        <p>Interactúa con la comunidad: da likes, comenta, guarda tus recetas favoritas y construye tu red culinaria.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <!-- ══ FEATURES ══ -->
+  <!-- ══ FUNCIONALIDADES ══ -->
   <div class="divider"></div>
   <div class="features-section" id="features">
     <div class="features-inner">
       <p class="section-label reveal">03 — Funcionalidades</p>
-      <h2 class="reveal">¿Qué puede <em>hacer</em>?</h2>
+      <h2 class="reveal">Todo lo que <em>puedes hacer</em></h2>
 
       <div class="features-grid">
         <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-utensils"></i></div>
-          <h4>Feed de Recetas</h4>
-          <p>Scroll continuo de publicaciones culinarias de los usuarios que sigues.</p>
+          <div class="feature-icon"><i class="fas fa-home"></i></div>
+          <h4>Feed Principal</h4>
+          <p>Scroll infinito con recetas de la comunidad. Filtra por categorías: Pastas, Carnes, Postres, Vegano, Sopas
+            y Ensaladas.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-book-open"></i></div>
-          <h4>Detalle de Receta</h4>
-          <p>Vista completa con ingredientes, pasos y fotografías para cocinar.</p>
+          <div class="feature-icon"><i class="fas fa-search"></i></div>
+          <h4>Explorar</h4>
+          <p>Buscador de recetas y usuarios. Categorías visuales, tendencias 🔥 y chefs destacados.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
-          <h4>Perfil de Usuario</h4>
-          <p>Galería personal, seguidores y estadísticas del perfil culinario.</p>
+          <div class="feature-icon"><i class="fas fa-heart"></i></div>
+          <h4>Interacción</h4>
+          <p>Likes, favoritos, comentarios y seguimiento de usuarios. Notificaciones en tiempo real.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-plus-circle"></i></div>
+          <h4>Crear Recetas</h4>
+          <p>Formulario completo: título, descripción, tiempo, porciones, categoría, foto, ingredientes y pasos.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-user"></i></div>
+          <h4>Perfil Personal</h4>
+          <p>Tus recetas, estadísticas de seguidores, edición de perfil con foto y biografía, y acceso a favoritos.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-bell"></i></div>
+          <h4>Notificaciones</h4>
+          <p>Alertas de likes, comentarios, nuevos seguidores. Configuración de preferencias y modo oscuro.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon"><i class="fas fa-lock"></i></div>
-          <h4>Autenticación</h4>
-          <p>Registro e inicio de sesión seguro con Firebase Authentication.</p>
+          <h4>Autenticación Segura</h4>
+          <p>Registro e inicio de sesión con Firebase Authentication. Protección de datos de usuario.</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon"><i class="fas fa-camera"></i></div>
           <h4>Carga de Imágenes</h4>
-          <p>Subida de fotos a Firebase Storage con calidad visual óptima.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-hand-peace"></i></div>
-          <h4>Onboarding</h4>
-          <p>Flujo de bienvenida intuitivo para nuevos usuarios.</p>
+          <p>Subida de fotos a Firebase Storage con calidad optimizada para redes sociales.</p>
         </div>
       </div>
     </div>
@@ -890,17 +977,67 @@
     <p class="section-label reveal">04 — Pantallas</p>
     <h2 class="reveal">Flujo <em>completo</em> de la app</h2>
     <p class="body-text reveal">
-      La aplicación fue desarrollada pantalla por pantalla de forma metódica,
-      cubriendo todos los flujos esenciales de la experiencia de usuario.
+      La aplicación cuenta con 13 pantallas principales que cubren toda la experiencia del usuario,
+      desde el primer ingreso hasta la gestión completa de recetas y perfil.
     </p>
-    <div class="screens-row reveal">
-      <div class="screen-pill"><i class="fas fa-mobile-alt"></i><span>Splash</span></div>
-      <div class="screen-pill"><i class="fas fa-chalkboard-user"></i><span>Onboarding</span></div>
-      <div class="screen-pill"><i class="fas fa-sign-in-alt"></i><span>Login</span></div>
-      <div class="screen-pill"><i class="fas fa-user-plus"></i><span>Registro</span></div>
-      <div class="screen-pill"><i class="fas fa-rss"></i><span>Feed</span></div>
-      <div class="screen-pill"><i class="fas fa-info-circle"></i><span>Detalle</span></div>
-      <div class="screen-pill"><i class="fas fa-id-card"></i><span>Perfil</span></div>
+
+    <!-- Pantallas agrupadas -->
+    <div class="screens-group reveal">
+      <h3 style="color: var(--gold); margin: 2rem 0 1rem 0; font-size: 1.2rem;">
+        <i class="fas fa-play-circle"></i> Inicio y Autenticación
+      </h3>
+      <div class="screens-row">
+        <div class="screen-pill"><i class="fas fa-mobile-alt"></i><span>Splash</span></div>
+        <div class="screen-pill"><i class="fas fa-chalkboard-user"></i><span>Onboarding</span></div>
+        <div class="screen-pill"><i class="fas fa-sign-in-alt"></i><span>Login</span></div>
+        <div class="screen-pill"><i class="fas fa-user-plus"></i><span>Registro</span></div>
+      </div>
+
+      <h3 style="color: var(--gold); margin: 2rem 0 1rem 0; font-size: 1.2rem;">
+        <i class="fas fa-stream"></i> Contenido Principal
+      </h3>
+      <div class="screens-row">
+        <div class="screen-pill"><i class="fas fa-rss"></i><span>Home / Feed</span></div>
+        <div class="screen-pill"><i class="fas fa-compass"></i><span>Explorar</span></div>
+        <div class="screen-pill"><i class="fas fa-info-circle"></i><span>Detalle de Receta</span></div>
+        <div class="screen-pill"><i class="fas fa-plus-square"></i><span>Crear Receta</span></div>
+      </div>
+
+      <h3 style="color: var(--gold); margin: 2rem 0 1rem 0; font-size: 1.2rem;">
+        <i class="fas fa-user"></i> Perfil y Social
+      </h3>
+      <div class="screens-row">
+        <div class="screen-pill"><i class="fas fa-id-card"></i><span>Mi Perfil</span></div>
+        <div class="screen-pill"><i class="fas fa-user-edit"></i><span>Editar Perfil</span></div>
+        <div class="screen-pill"><i class="fas fa-users"></i><span>Perfil de Usuario</span></div>
+        <div class="screen-pill"><i class="fas fa-user-friends"></i><span>Seguidores/Siguiendo</span></div>
+      </div>
+
+      <h3 style="color: var(--gold); margin: 2rem 0 1rem 0; font-size: 1.2rem;">
+        <i class="fas fa-cog"></i> Configuración y Utilidades
+      </h3>
+      <div class="screens-row">
+        <div class="screen-pill"><i class="fas fa-bookmark"></i><span>Favoritos</span></div>
+        <div class="screen-pill"><i class="fas fa-bell"></i><span>Notificaciones</span></div>
+        <div class="screen-pill"><i class="fas fa-sliders-h"></i><span>Configuración</span></div>
+      </div>
+    </div>
+
+    <!-- Resumen visual -->
+    <div class="stats-summary reveal"
+      style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+      <div class="stat-badge"
+        style="background: rgba(200, 155, 64, 0.15); border-radius: 2rem; padding: 0.5rem 1.5rem;">
+        <i class="fas fa-mobile-alt"></i> 13 Pantallas
+      </div>
+      <div class="stat-badge"
+        style="background: rgba(200, 155, 64, 0.15); border-radius: 2rem; padding: 0.5rem 1.5rem;">
+        <i class="fas fa-code-branch"></i> 20+ Componentes
+      </div>
+      <div class="stat-badge"
+        style="background: rgba(200, 155, 64, 0.15); border-radius: 2rem; padding: 0.5rem 1.5rem;">
+        <i class="fas fa-database"></i> 6 Colecciones en Firestore
+      </div>
     </div>
   </section>
 
@@ -914,12 +1051,42 @@
       y backend en la nube, garantizando escalabilidad y rendimiento.
     </p>
     <div class="stack-grid">
-      <div class="stack-item reveal"><span class="stack-icon"><i class="fab fa-react"></i></span><div><h5>Frontend</h5><p>React Native CLI</p></div></div>
-      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-cloud"></i></span><div><h5>Backend</h5><p>Firebase + Node.js</p></div></div>
-      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-database"></i></span><div><h5>Base de Datos</h5><p>Cloud Firestore</p></div></div>
-      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-image"></i></span><div><h5>Almacenamiento</h5><p>Firebase Storage</p></div></div>
-      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-key"></i></span><div><h5>Autenticación</h5><p>Firebase Auth</p></div></div>
-      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-cubes"></i></span><div><h5>Arquitectura</h5><p>Componentes modulares</p></div></div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fab fa-react"></i></span>
+        <div>
+          <h5>Frontend</h5>
+          <p>React Native CLI</p>
+        </div>
+      </div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-cloud"></i></span>
+        <div>
+          <h5>Backend</h5>
+          <p>Firebase + Node.js</p>
+        </div>
+      </div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-database"></i></span>
+        <div>
+          <h5>Base de Datos</h5>
+          <p>Cloud Firestore</p>
+        </div>
+      </div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-image"></i></span>
+        <div>
+          <h5>Almacenamiento</h5>
+          <p>Firebase Storage</p>
+        </div>
+      </div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-key"></i></span>
+        <div>
+          <h5>Autenticación</h5>
+          <p>Firebase Auth</p>
+        </div>
+      </div>
+      <div class="stack-item reveal"><span class="stack-icon"><i class="fas fa-cubes"></i></span>
+        <div>
+          <h5>Arquitectura</h5>
+          <p>Componentes modulares</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -928,7 +1095,7 @@
     <p class="section-label reveal">06 — Descargar</p>
     <h2 class="reveal">La aplicación <em>SABORIZATE</em> para descargar</h2>
     <p class="body-text reveal">
-      Disponible próximamente en las principales tiendas de aplicaciones. 
+      Disponible próximamente en las principales tiendas de aplicaciones.
       Sé parte de la comunidad culinaria que está revolucionando la forma de compartir recetas.
     </p>
 
@@ -953,7 +1120,7 @@
 
     <div class="qr-container reveal">
       <div class="qr-placeholder">
-        <i class="fas fa-qrcode"></i>
+        <img src="img/url Descargar.png" alt="qr" width="140" height="140">
       </div>
       <p><i class="fas fa-mobile-alt"></i> Escanea el código QR para descargar la versión demo</p>
     </div>
@@ -965,14 +1132,13 @@
     <blockquote class="reveal">
       La cocina es el lenguaje universal de quienes expresan amor a través del sabor.
       Saborizate es el lugar donde ese lenguaje se comparte.
-      <footer>— Mauricio, creador de Saborizate</footer>
     </blockquote>
   </div>
-  
+
   <!-- ══ FOOTER ══ -->
   <div class="divider"></div>
   <footer class="page-footer">
-    <i class="fas fa-utensil-spoon"></i> Saborizate &mdash; 2026 &nbsp;|&nbsp; 
+    <i class="fas fa-utensil-spoon"></i> Saborizate &mdash; 2026 &nbsp;|&nbsp;
     <i class="fab fa-react"></i> React Native &bull; <i class="fas fa-fire"></i> Firebase
   </footer>
 
@@ -982,44 +1148,44 @@
     const mainNav = document.getElementById('mainNav');
     const closeMenuBtn = document.getElementById('closeMenu');
     const menuOverlay = document.getElementById('menuOverlay');
-    
+
     function openMenu() {
       mainNav.classList.add('open');
       menuOverlay.classList.add('active');
       document.body.style.overflow = 'hidden'; // Evita scroll cuando el menú está abierto
     }
-    
+
     function closeMenu() {
       mainNav.classList.remove('open');
       menuOverlay.classList.remove('active');
       document.body.style.overflow = '';
     }
-    
+
     if (menuToggle) {
       menuToggle.addEventListener('click', openMenu);
     }
-    
+
     if (closeMenuBtn) {
       closeMenuBtn.addEventListener('click', closeMenu);
     }
-    
+
     if (menuOverlay) {
       menuOverlay.addEventListener('click', closeMenu);
     }
-    
+
     // Cerrar menú al hacer clic en un enlace
     const navLinks = document.querySelectorAll('#mainNav ul li a');
     navLinks.forEach(link => {
       link.addEventListener('click', closeMenu);
     });
-    
+
     // Ajustar al cambiar tamaño de ventana: si se redimensiona a escritorio y el menú estaba abierto, se cierra
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
       if (window.innerWidth > 768 && mainNav.classList.contains('open')) {
         closeMenu();
       }
     });
-    
+
     // Intersection Observer for reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1033,7 +1199,7 @@
         }
       });
     }, { threshold: 0.12 });
-    
+
     reveals.forEach(el => observer.observe(el));
   </script>
 </body>
